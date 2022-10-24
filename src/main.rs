@@ -97,9 +97,9 @@ impl MainState {
             }
             _ => {
                 let mut rng = rand::thread_rng();
-                for i in 0..config.grid_width{
-                    for j in 0..config.grid_height{
-                        if rng.gen::<bool>(){
+                for i in 0..config.grid_width {
+                    for j in 0..config.grid_height {
+                        if rng.gen::<bool>() {
                             start_cells_coords.push((i, j).into());
                         }
                     }
@@ -108,10 +108,7 @@ impl MainState {
         }
         // Convert the starting states into a vector of points
         grid.set_state(&start_cells_coords);
-        MainState {
-            grid,
-            config,
-        }
+        MainState { grid, config }
     }
 }
 

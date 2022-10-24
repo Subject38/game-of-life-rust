@@ -34,7 +34,7 @@ impl Grid {
                 if x_off == 0 && y_off == 0 {
                     continue;
                 }
-                
+
                 let neighbour_coords = (cell_pos.x as isize + x_off, cell_pos.y as isize + y_off);
                 if neighbour_coords.0 < 0
                     || neighbour_coords.0 > self.width as isize - 1
@@ -43,9 +43,11 @@ impl Grid {
                 {
                     continue;
                 }
-                let neighbour_pos = Point {x: neighbour_coords.0 as usize, y: neighbour_coords.1 as usize};
-                let idx =
-                    self.coords_to_index(neighbour_pos);
+                let neighbour_pos = Point {
+                    x: neighbour_coords.0 as usize,
+                    y: neighbour_coords.1 as usize,
+                };
+                let idx = self.coords_to_index(neighbour_pos);
                 if self.cells[idx].is_alive() {
                     num_neighbour_alive += 1;
                 }
@@ -95,6 +97,9 @@ impl Grid {
 
     /// Converts a index in the cells vecotr into pair of cell coords
     pub fn index_to_coords(&self, index: usize) -> Point {
-        Point {x: index % self.height, y: index / self.width}
+        Point {
+            x: index % self.height,
+            y: index / self.width,
+        }
     }
 }
